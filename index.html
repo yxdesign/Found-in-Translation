@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data fetching machine</title>
+</head>
+<body>
+    <button id="startTheProcess"> PRESS THIS WILL HAVE A TERRIBLE CONSEQUENCE!</button>
+    <script>
+        //references in html
+        let triggerButton = document.getElementById("startTheProcess")
+        let randomCocktailURL = "www.thecocktaildb.com/api/json/v1/1/random.php"
+    
+        //functions
+        let triggerHandler = function (){
+            fetchRandomCocktail()
+        }
+
+        let fetchRandomCocktail = function(){
+            fetch (randomCocktailURL).
+            then( (response) => {
+                //check what the page is going to give us when trying to fetch a random url
+                console.info(response)
+                return response.json()
+            }).then ( (data) => {
+                console.info(data)
+            })
+        }
+        
+        //events
+        triggerButton.addEventListener('click', triggerHandler)
+    </script>
+</body>
+</html>
